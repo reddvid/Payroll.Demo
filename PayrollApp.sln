@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6319A1AF-421B-4DEB-83B9-B6A92378ECBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollApp.BLTests", "Tests\PayrollApp.BLTests\PayrollApp.BLTests.csproj", "{EF4F7078-C276-4517-A443-B0CA7E61CC28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollApp.BLogic", "PayrollApp.BLogic\PayrollApp.BLogic.csproj", "{FD528DDE-FA1C-40C6-99AE-80B813E4F8B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF4F7078-C276-4517-A443-B0CA7E61CC28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF4F7078-C276-4517-A443-B0CA7E61CC28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF4F7078-C276-4517-A443-B0CA7E61CC28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF4F7078-C276-4517-A443-B0CA7E61CC28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD528DDE-FA1C-40C6-99AE-80B813E4F8B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD528DDE-FA1C-40C6-99AE-80B813E4F8B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD528DDE-FA1C-40C6-99AE-80B813E4F8B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD528DDE-FA1C-40C6-99AE-80B813E4F8B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EF4F7078-C276-4517-A443-B0CA7E61CC28} = {6319A1AF-421B-4DEB-83B9-B6A92378ECBD}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C1F74DFD-B0BD-4B7B-86DB-F1DF034C720C}
+	EndGlobalSection
+EndGlobal
