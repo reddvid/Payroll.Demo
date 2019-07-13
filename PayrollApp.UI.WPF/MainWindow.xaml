@@ -8,9 +8,9 @@
     Title="MainWindow"
     Width="800"
     Height="450"
-    DataContext="local:ViewModels.MainViewModel"
     mc:Ignorable="d">
-    <Grid>
-        <ListView ItemsSource="{Binding BirthdaysThisMonth}" />
-    </Grid>
+    <StackPanel>
+        <ComboBox x:Name="birthdaysFilter" />
+        <ListView Height="388" ItemsSource="{Binding DisplayedList, Mode=OneWay}" />
+    </StackPanel>
 </Window>

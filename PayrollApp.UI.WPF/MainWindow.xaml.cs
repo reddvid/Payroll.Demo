@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PayrollApp.BLogic;
+using PayrollApp.UI.WPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,11 +22,27 @@ namespace PayrollApp.UI.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MainViewModel ViewModel { get; } = new MainViewModel();
         public MainWindow()
         {
             InitializeComponent();
 
-            this.DataContext = new ViewModels.MainViewModel();
+            this.DataContext = ViewModel;
+
+            birthdaysFilter.ItemsSource = new List<string>
+            {
+                "Today",
+                "Upcoming",
+                "This Month",
+            };
+            // Set the event handler first so setting the index will trigger the event
+            birthdaysFilter.SelectionChanged += BirthdaysFilter_SelectionChanged;
+            birthdaysFilter.SelectedIndex = 1;
+        }
+
+        private void BirthdaysFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ViewModel.SetBirthdaysList(birthdaysFilter.SelectedIndex);
         }
     }
 }

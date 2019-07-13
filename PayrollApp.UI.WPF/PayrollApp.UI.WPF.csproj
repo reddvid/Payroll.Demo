@@ -107,6 +107,10 @@
       <Project>{fd528dde-fa1c-40c6-99ae-80b813e4f8b6}</Project>
       <Name>PayrollApp.BLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PayrollApp.Common\PayrollApp.Common.csproj">
+      <Project>{63641cc3-c366-43ed-970b-5ec4b3c8884e}</Project>
+      <Name>PayrollApp.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
