@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollApp.BLTests", "Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollApp.BLogic", "PayrollApp.BLogic\PayrollApp.BLogic.csproj", "{FD528DDE-FA1C-40C6-99AE-80B813E4F8B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollApp.Common", "PayrollApp.Common\PayrollApp.Common.csproj", "{63641CC3-C366-43ED-970B-5EC4B3C8884E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollApp.UI.WPF", "PayrollApp.UI.WPF\PayrollApp.UI.WPF.csproj", "{FA66C248-3473-4E5C-8F16-34BBCC390CCA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +27,14 @@ Global
 		{FD528DDE-FA1C-40C6-99AE-80B813E4F8B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD528DDE-FA1C-40C6-99AE-80B813E4F8B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD528DDE-FA1C-40C6-99AE-80B813E4F8B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63641CC3-C366-43ED-970B-5EC4B3C8884E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63641CC3-C366-43ED-970B-5EC4B3C8884E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63641CC3-C366-43ED-970B-5EC4B3C8884E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63641CC3-C366-43ED-970B-5EC4B3C8884E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA66C248-3473-4E5C-8F16-34BBCC390CCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA66C248-3473-4E5C-8F16-34BBCC390CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA66C248-3473-4E5C-8F16-34BBCC390CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA66C248-3473-4E5C-8F16-34BBCC390CCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
