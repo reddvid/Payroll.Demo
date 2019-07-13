@@ -9,10 +9,43 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
-    <Grid>
+
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="20,0,0,0" />
+            <Setter Property="MinWidth" Value="200" />
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="Margin" Value="20,0,0,0" />
+            <Setter Property="MinWidth" Value="200" />
+        </Style>
+        <Style x:Key="VerticalStack" TargetType="StackPanel" />
+    </Window.Resources>
+
+    <StackPanel VerticalAlignment="Center">
         <TextBlock
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Text="Login" />
-    </Grid>
+        <StackPanel
+            Margin="0,20,0,0"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <TextBlock Text="Username:" />
+            <TextBox x:Name="txUser" />
+        </StackPanel>
+        <StackPanel
+            Margin="0,20,0,0"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <TextBlock Text="Password:" />
+            <PasswordBox x:Name="txPassword" />
+        </StackPanel>
+        <Button
+            x:Name="btnLogin"
+            Width="240"
+            Margin="0,20,0,0"
+            Content="Login"
+            IsEnabled="{Binding IsLoginButtonEnabled, Mode=OneWay}" />
+    </StackPanel>
 </Window>

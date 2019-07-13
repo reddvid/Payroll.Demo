@@ -37,7 +37,7 @@ namespace PayrollApp.UI.WPF
             };
             // Set the event handler first so setting the index will trigger the event
             birthdaysFilter.SelectionChanged += BirthdaysFilter_SelectionChanged;
-            birthdaysFilter.SelectedIndex = 1;
+            birthdaysFilter.SelectedIndex = 0;
         }
 
         private void BirthdaysFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
