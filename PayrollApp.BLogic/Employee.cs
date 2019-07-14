@@ -20,8 +20,17 @@ namespace PayrollApp.BLogic
         {
             get
             {
-                return "ID-00" + EmployeeId;
+                return "ID-" + EmployeeId;
             }
+        }
+
+        public bool Validate()
+        {
+            bool isValid = true;
+
+            if (string.IsNullOrWhiteSpace(FullName) || Age < 18) isValid = false;
+
+            return isValid;
         }
 
         public string Position { get; set; }

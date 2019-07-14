@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,15 +48,9 @@ namespace PayrollApp.BLogic
             {
                 var employeeRepository = new EmployeeRepository();
                 var today = DateTime.Today.Day;
+
                 var upcomingBirthdays = employeeRepository.RetrieveAll()
-                    .Where(x => x.BirthDate.Month == DateTime.Today.Month
-                    && (x.BirthDate.Day == today + 1
-                    || x.BirthDate.Day == today + 2
-                    || x.BirthDate.Day == today + 3
-                    || x.BirthDate.Day == today + 4
-                    || x.BirthDate.Day == today + 5
-                    || x.BirthDate.Day == today + 6
-                    || x.BirthDate.Day == today + 7))
+                    .Where(x => (x.BirthDate.Month == DateTime.Today.Month && x.BirthDate.Day > (DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month)) - DateTime.Today.Day) || x.BirthDate.Month > DateTime.Today.Month)
                     .ToList();
 
                 return upcomingBirthdays;

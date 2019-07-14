@@ -1,0 +1,29 @@
+﻿<Window
+    x:Class="PayrollApp.UI.WPF.Views.AddEmployee"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:PayrollApp.UI.WPF.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="AddEmployee"
+    Width="384.466"
+    Height="566.505"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="EMPLOYEE INFORMATION" />
+            <TextBlock Text="First Name:" />
+            <TextBox x:Name="txFirstName" />
+            <TextBlock Text="Middle Name:" />
+            <TextBox x:Name="txMiddleName" />
+            <TextBlock Text="Last Name:" />
+            <TextBox x:Name="txLastName" />
+            <TextBlock Text="Birthdate:" />
+            <DatePicker x:Name="dpBirthdate" />
+            <Button
+                x:Name="btnSave"
+                Margin="0,20,0,0"
+                Content="Save and Close" />
+        </StackPanel>
+    </Grid>
+</Window>

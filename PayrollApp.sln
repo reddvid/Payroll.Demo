@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollApp.Common", "Payrol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollApp.UI.WPF", "PayrollApp.UI.WPF\PayrollApp.UI.WPF.csproj", "{FA66C248-3473-4E5C-8F16-34BBCC390CCA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollApp.UITests", "Tests\PayrollApp.UITests\PayrollApp.UITests.csproj", "{29C69CA6-9E0F-4E8E-BCB7-C86A7B0D6DAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,12 +37,17 @@ Global
 		{FA66C248-3473-4E5C-8F16-34BBCC390CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA66C248-3473-4E5C-8F16-34BBCC390CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA66C248-3473-4E5C-8F16-34BBCC390CCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29C69CA6-9E0F-4E8E-BCB7-C86A7B0D6DAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29C69CA6-9E0F-4E8E-BCB7-C86A7B0D6DAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29C69CA6-9E0F-4E8E-BCB7-C86A7B0D6DAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29C69CA6-9E0F-4E8E-BCB7-C86A7B0D6DAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EF4F7078-C276-4517-A443-B0CA7E61CC28} = {6319A1AF-421B-4DEB-83B9-B6A92378ECBD}
+		{29C69CA6-9E0F-4E8E-BCB7-C86A7B0D6DAA} = {6319A1AF-421B-4DEB-83B9-B6A92378ECBD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C1F74DFD-B0BD-4B7B-86DB-F1DF034C720C}

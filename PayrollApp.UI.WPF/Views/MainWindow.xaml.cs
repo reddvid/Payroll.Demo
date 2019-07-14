@@ -2,6 +2,7 @@
 using PayrollApp.UI.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PayrollApp.UI.WPF
+namespace PayrollApp.UI.WPF.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -29,6 +30,38 @@ namespace PayrollApp.UI.WPF
 
             this.DataContext = ViewModel;
 
+            InitializeFilter();
+
+            LoadEmployees();
+
+            btnAddEmployee.Click += BtnAddEmployee_Click;
+        }
+
+        public List<Employee> GetEmployeesFromRepository()
+        {
+            var employeeRepository = new EmployeeRepository();
+
+            return employeeRepository.RetrieveAll();
+        }
+
+        private void LoadEmployees()
+        {
+            lvEmployees.ItemsSource = GetEmployeesFromRepository();
+        }
+
+        private void BtnAddEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            var result = new AddEmployee().ShowDialog();
+
+            if (result == false)
+            {
+                // Update ListView
+                lvEmployees.ItemsSource = GetEmployeesFromRepository();
+            }
+        }
+
+        private void InitializeFilter()
+        {
             birthdaysFilter.ItemsSource = new List<string>
             {
                 "Today",
