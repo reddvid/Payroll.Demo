@@ -50,7 +50,11 @@ namespace PayrollApp.BLogic
                 var today = DateTime.Today.Day;
 
                 var upcomingBirthdays = employeeRepository.RetrieveAll()
-                    .Where(x => (x.BirthDate.Month == DateTime.Today.Month && x.BirthDate.Day > (DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month)) - DateTime.Today.Day) || x.BirthDate.Month > DateTime.Today.Month)
+                    .Where(
+                        x => (x.BirthDate.Month == DateTime.Today.Month &&
+                        x.BirthDate.Day < DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) &&
+                        x.BirthDate.Day > DateTime.Today.Day) || 
+                        x.BirthDate.Month > DateTime.Today.Month)
                     .ToList();
 
                 return upcomingBirthdays;
