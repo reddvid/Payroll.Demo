@@ -9,7 +9,7 @@ namespace PayrollApp.BLogic
 {
     public class Celebrants
     {
-        public List<Employee> DataSource { get; private set; }
+        List<Employee> DataSource;
 
         public Celebrants()
         {
