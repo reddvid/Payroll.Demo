@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using wt = Xceed.Wpf.Toolkit;
 
 namespace PayrollApp.UI.WPF.Views
 {
@@ -23,6 +24,8 @@ namespace PayrollApp.UI.WPF.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        public bool isLoggedOut = false;
+
         public MainViewModel ViewModel { get; } = new MainViewModel();
         public MainWindow(string loggedUser)
         {
@@ -34,7 +37,10 @@ namespace PayrollApp.UI.WPF.Views
 
             btnAddEmployee.Click += BtnAddEmployee_Click;
 
-            btnEditEmployee.IsEnabled = false;
+            btnEditEmployee.IsEnabled =
+               btnSetItem.IsEnabled =
+               btnSendEmail.IsEnabled =
+               btnViewDetails.IsEnabled = false;
             btnEditEmployee.Click += BtnEditEmployee_Click;
 
             LoadEmployees();
@@ -47,12 +53,28 @@ namespace PayrollApp.UI.WPF.Views
             btnLogout.Click += BtnLogout_Click;
 
             this.Closing += MainWindow_Closing;
+
+            btnSetItem.Drop += BtnSetItem_Drop;
+        }
+
+        private void BtnSetItem_Drop(object sender, DragEventArgs e)
+        {
+            ContextMenu cm = this.ContextMenu as ContextMenu;
+            cm.PlacementTarget = sender as wt.SplitButton;
+            cm.IsOpen = true;
         }
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            e.Cancel = true;
-            this.WindowState = WindowState.Minimized;
+            if (!isLoggedOut)
+            {
+                e.Cancel = true;
+                WindowState = WindowState.Minimized;
+            }
+            else
+            {
+                e.Cancel = false;
+            }
         }
 
         private void BtnLogout_Click(object sender, RoutedEventArgs e)
@@ -64,6 +86,7 @@ namespace PayrollApp.UI.WPF.Views
 
             if (result == MessageBoxResult.Yes)
             {
+                isLoggedOut = true;
                 this.Hide();
                 new LoginWindow().Show();
                 this.Close();
@@ -77,7 +100,10 @@ namespace PayrollApp.UI.WPF.Views
 
         private void LvEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            btnEditEmployee.IsEnabled = (e.AddedItems[0] != null);
+            btnEditEmployee.IsEnabled =
+                btnSetItem.IsEnabled =
+                btnSendEmail.IsEnabled =
+                btnViewDetails.IsEnabled = (e.AddedItems[0] != null);
         }
 
         private void BtnEditEmployee_Click(object sender, RoutedEventArgs e)
