@@ -31,11 +31,17 @@ namespace PayrollApp.UI.WPF.Views
             DataContext = ViewModel;
 
             btnLogin.Click += BtnLogin_Click;
+            txPassword.PasswordChanged += TxPassword_PasswordChanged;
 
 #if DEBUG
             txUser.Text = "admin";
             txPassword.Password = "admin01";
 #endif
+        }
+
+        private void TxPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            tbPasswordWatermark.Visibility = (string.IsNullOrEmpty(txPassword.Password)) ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)

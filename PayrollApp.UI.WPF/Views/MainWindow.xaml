@@ -5,10 +5,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:PayrollApp.UI.WPF.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MainWindow"
+    Title="Home"
     Width="800"
     Height="450"
-    WindowStartupLocation="CenterOwner"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.Resources>
         <Style x:Key="SquareButton" TargetType="Button">
@@ -18,43 +18,67 @@
     </Window.Resources>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
-            <Button
-                x:Name="btnAddEmployee"
-                Content="Add"
-                Style="{StaticResource SquareButton}" />
-            <Button
-                x:Name="btnEditEmployee"
-                Content="Edit"
-                Style="{StaticResource SquareButton}" />
-        </StackPanel>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <StackPanel>
-                    <TextBlock Text="Sort by Department" />
+        <TabControl x:Name="tabMenu" TabStripPlacement="Left">
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabItem}">
+                    <Setter Property="HeaderTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <Grid
+                                    Width="120"
+                                    Height="60"
+                                    VerticalAlignment="Center">
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Text="{TemplateBinding Content}" />
+                                </Grid>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header="Dashboard">
+                <Grid>
+                    <StackPanel Grid.Row="1" Grid.Column="1">
+                        <ComboBox x:Name="birthdaysFilter" />
+                        <ListView
+                            Height="388"
+                            ItemsSource="{Binding DisplayedList, Mode=OneWay}"
+                            SelectionMode="Single" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Employees">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <Button
+                            x:Name="btnAddEmployee"
+                            Content="Add"
+                            Style="{StaticResource SquareButton}" />
+                        <Button
+                            x:Name="btnEditEmployee"
+                            Content="Edit"
+                            Style="{StaticResource SquareButton}" />
+                    </StackPanel>
 
-                </StackPanel>
-                <ListView x:Name="lvEmployees" Grid.Row="1" />
-            </Grid>
-            <StackPanel Grid.Row="1" Grid.Column="1">
-                <ComboBox x:Name="birthdaysFilter" />
-                <ListView
-                    Height="388"
-                    ItemsSource="{Binding DisplayedList, Mode=OneWay}"
-                    SelectionMode="Single" />
-            </StackPanel>
-        </Grid>
+                    <StackPanel Grid.Row="1">
+                        <TextBlock Text="Sort by Department" />
+
+                    </StackPanel>
+                    <ListView x:Name="lvEmployees" Grid.Row="1" />
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="HI" />
+
+
+        </TabControl>
+
+
     </Grid>
 </Window>

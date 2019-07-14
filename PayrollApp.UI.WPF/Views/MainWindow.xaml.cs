@@ -39,6 +39,13 @@ namespace PayrollApp.UI.WPF.Views
 
             LoadEmployees();
             lvEmployees.SelectionChanged += LvEmployees_SelectionChanged;
+
+            tabMenu.SelectionChanged += TabMenu_SelectionChanged;
+        }
+
+        private void TabMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.Title = "Home - " + ((TabItem)tabMenu.SelectedItem).Header;
         }
 
         private void LvEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
