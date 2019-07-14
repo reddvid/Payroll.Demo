@@ -42,9 +42,9 @@ namespace PayrollApp.UI.WPF.ViewModels
         {
             var celebrants = new Celebrants();
 
-            BirthdaysThisMonth = celebrants.ThisMonth;
-            BirthdaysToday = celebrants.Today;
-            BirthdaysUpcoming = celebrants.Upcoming;
+            BirthdaysThisMonth = celebrants.CelebrantsThisMonth;
+            BirthdaysToday = celebrants.CelebrantsToday;
+            BirthdaysUpcoming = celebrants.UpcomingCelebrants;
         }
 
         public List<Employee> BirthdaysThisMonth { get; private set; }

@@ -13,48 +13,51 @@ namespace PayrollApp.BLogic
     {
         private static readonly string CONNECTION_STRING = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\OneDrive\Documents\pr_users.mdf;Integrated Security=True;Connect Timeout=30";
 
-        public List<Employee> RetrieveAll()
+        public List<Employee> RetrieveAll
         {
-            var employees = new List<Employee>();
-
-            try
+            get
             {
-                using (var conn = new SqlConnection(CONNECTION_STRING))
+                var employees = new List<Employee>();
+
+                try
                 {
-                    string query = "SELECT * FROM Employees";
-
-                    using (var cmd = new SqlCommand(query, conn))
+                    using (var conn = new SqlConnection(CONNECTION_STRING))
                     {
-                        conn.Open();
+                        string query = "SELECT * FROM Employees";
 
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        using (var cmd = new SqlCommand(query, conn))
                         {
-                            while (reader.Read())
-                            {
-                                Debug.WriteLine(reader.GetDateTime(4));
+                            conn.Open();
 
-                                employees.Add(new Employee
+                            using (SqlDataReader reader = cmd.ExecuteReader())
+                            {
+                                while (reader.Read())
                                 {
-                                    FirstName = reader.GetString(1),
-                                    MiddleName = reader.GetString(2),
-                                    LastName = reader.GetString(3),
-                                    BirthDate = reader.GetDateTime(4)
-                                });
+                                    Debug.WriteLine(reader.GetDateTime(4));
+
+                                    employees.Add(new Employee
+                                    {
+                                        FirstName = reader.GetString(1),
+                                        MiddleName = reader.GetString(2),
+                                        LastName = reader.GetString(3),
+                                        BirthDate = reader.GetDateTime(4)
+                                    });
+                                }
                             }
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
 
-            //employees.Add(new Employee { FirstName = "David", LastName = "Ballesteros", BirthDate = new DateTime(1992, 6, 14) });
-            //employees.Add(new Employee { FirstName = "Mang", LastName = "Kanor", BirthDate = new DateTime(2004, 7, 13) });
-            //employees.Add(new Employee { FirstName = "Mang", LastName = "Tomas", BirthDate = new DateTime(2004, 7, 18) });
+                //employees.Add(new Employee { FirstName = "David", LastName = "Ballesteros", BirthDate = new DateTime(1992, 6, 14) });
+                //employees.Add(new Employee { FirstName = "Mang", LastName = "Kanor", BirthDate = new DateTime(2004, 7, 13) });
+                //employees.Add(new Employee { FirstName = "Mang", LastName = "Tomas", BirthDate = new DateTime(2004, 7, 18) });
 
-            return employees;
+                return employees;
+            }
         }
 
         public Employee Retrieve(int employeeId)

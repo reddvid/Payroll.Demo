@@ -6,12 +6,15 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using PayrollApp.UI.WPF.ViewModels;
 using PayrollApp.BLogic;
+using System.Collections.Generic;
 
 namespace PayrollApp.UITests
 {
     [TestClass]
     public class UITests
     {
+        
+
         [TestMethod]
         public void Login()
         {

@@ -9,51 +9,72 @@ namespace PayrollApp.BLogic
 {
     public class Celebrants
     {
+        public List<Employee> DataSource { get; private set; }
+
         public Celebrants()
         {
-
         }
 
-        public Celebrants(Employee employee)
+        public Celebrants(List<Employee> employees)
         {
-
+            DataSource = employees;
         }
 
-        public List<Employee> ThisMonth
+        public List<Employee> GetEmployeesFromRepository()
+        {
+            var employeeRepository = new EmployeeRepository();
+
+            return employeeRepository.RetrieveAll;
+        }
+
+        public List<Employee> CelebrantsThisMonth
         {
             get
             {
-                var employeeRepository = new EmployeeRepository();
-                var birthDaysThisMonth = employeeRepository.RetrieveAll()
-                    .Where(x => x.BirthDate.Month == DateTime.Today.Month).ToList();
+                if (DataSource.Count == 0)
+                {
+                    DataSource = GetEmployeesFromRepository();
+                }
+
+                var birthDaysThisMonth = DataSource.Where(
+                        x =>
+                        x.BirthDate.Month == DateTime.Today.Month)
+                    .ToList();
                 return birthDaysThisMonth;
             }
         }
-        public List<Employee> Today
+        public List<Employee> CelebrantsToday
         {
             get
             {
-                var employeeRepository = new EmployeeRepository();
-                var birthDaysToday = employeeRepository.RetrieveAll()
-                    .Where(x
-                    => x.BirthDate.Month == DateTime.Today.Month
-                    && x.BirthDate.Day == DateTime.Today.Day)
-                    .ToList();
+                if (DataSource.Count == 0)
+                {
+                    DataSource = GetEmployeesFromRepository();
+                }
+
+                var birthDaysToday = DataSource.Where(
+                        x =>
+                        x.BirthDate.Month == DateTime.Today.Month &&
+                        x.BirthDate.Day == DateTime.Today.Day)
+                        .ToList();
                 return birthDaysToday;
             }
         }
-        public List<Employee> Upcoming
+        public List<Employee> UpcomingCelebrants
         {
             get
             {
-                var employeeRepository = new EmployeeRepository();
                 var today = DateTime.Today.Day;
 
-                var upcomingBirthdays = employeeRepository.RetrieveAll()
-                    .Where(
+                if (DataSource.Count == 0)
+                {
+                    DataSource = GetEmployeesFromRepository();
+                }
+
+                var upcomingBirthdays = DataSource.Where(
                         x => (x.BirthDate.Month == DateTime.Today.Month &&
                         x.BirthDate.Day < DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) &&
-                        x.BirthDate.Day > DateTime.Today.Day) || 
+                        x.BirthDate.Day > DateTime.Today.Day) ||
                         x.BirthDate.Month > DateTime.Today.Month)
                     .ToList();
 

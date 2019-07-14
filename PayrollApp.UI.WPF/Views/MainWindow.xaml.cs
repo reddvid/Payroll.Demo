@@ -41,7 +41,7 @@ namespace PayrollApp.UI.WPF.Views
         {
             var employeeRepository = new EmployeeRepository();
 
-            return employeeRepository.RetrieveAll();
+            return employeeRepository.RetrieveAll;
         }
 
         private void LoadEmployees()

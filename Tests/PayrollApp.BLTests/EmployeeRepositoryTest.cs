@@ -13,7 +13,7 @@ namespace PayrollApp.BLTests
         {
             var employeeRepository = new EmployeeRepository();
 
-            Assert.AreEqual(1, employeeRepository.RetrieveAll().Count);
+            Assert.AreEqual(1, employeeRepository.RetrieveAll.Count);
         }
 
         [TestMethod]
