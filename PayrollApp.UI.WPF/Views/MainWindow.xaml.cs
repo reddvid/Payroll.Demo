@@ -32,9 +32,25 @@ namespace PayrollApp.UI.WPF.Views
 
             InitializeFilter();
 
-            LoadEmployees();
-
             btnAddEmployee.Click += BtnAddEmployee_Click;
+
+            btnEditEmployee.IsEnabled = false;
+            btnEditEmployee.Click += BtnEditEmployee_Click;
+
+            LoadEmployees();
+            lvEmployees.SelectionChanged += LvEmployees_SelectionChanged;
+        }
+
+        private void LvEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            btnEditEmployee.IsEnabled = (e.AddedItems[0] != null);
+        }
+
+        private void BtnEditEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            var employee = lvEmployees.SelectedItems[0] as Employee;
+
+            bool? result = new AddEmployee(employee) { Owner = this }.ShowDialog();
         }
 
         public List<Employee> GetEmployeesFromRepository()
@@ -51,7 +67,7 @@ namespace PayrollApp.UI.WPF.Views
 
         private void BtnAddEmployee_Click(object sender, RoutedEventArgs e)
         {
-            var result = new AddEmployee().ShowDialog();
+            var result = new AddEmployee() { Owner = this }.ShowDialog();
 
             if (result == false)
             {

@@ -8,6 +8,8 @@
     Title="AddEmployee"
     Width="384.466"
     Height="566.505"
+    ResizeMode="CanMinimize"
+    WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
     <Grid>
         <StackPanel>

@@ -18,11 +18,27 @@ namespace PayrollApp.UI.WPF.Views
         {
             InitializeComponent();
 
+            this.Title = "Add New Employee";
+
+            DataContext = ViewModel;
+
             btnSave.Click += BtnSave_Click;
 
 #if DEBUG
             InsertRandomTexts();
 #endif
+        }
+
+        public AddEmployee(Employee employee)
+        {
+            InitializeComponent();
+
+            this.Title = "Edit Employee";
+
+            txFirstName.Text = employee.FirstName;
+            txMiddleName.Text = employee.MiddleName;
+            txLastName.Text = employee.LastName;
+            dpBirthdate.SelectedDate = employee.BirthDate;
         }
 
         private void InsertRandomTexts()

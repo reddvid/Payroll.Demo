@@ -8,6 +8,7 @@
     Title="MainWindow"
     Width="800"
     Height="450"
+    WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
     <Window.Resources>
         <Style x:Key="SquareButton" TargetType="Button">
@@ -26,16 +27,33 @@
                 x:Name="btnAddEmployee"
                 Content="Add"
                 Style="{StaticResource SquareButton}" />
+            <Button
+                x:Name="btnEditEmployee"
+                Content="Edit"
+                Style="{StaticResource SquareButton}" />
         </StackPanel>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <ListView x:Name="lvEmployees" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <StackPanel>
+                    <TextBlock Text="Sort by Department" />
+
+                </StackPanel>
+                <ListView x:Name="lvEmployees" Grid.Row="1" />
+            </Grid>
             <StackPanel Grid.Row="1" Grid.Column="1">
                 <ComboBox x:Name="birthdaysFilter" />
-                <ListView Height="388" ItemsSource="{Binding DisplayedList, Mode=OneWay}" />
+                <ListView
+                    Height="388"
+                    ItemsSource="{Binding DisplayedList, Mode=OneWay}"
+                    SelectionMode="Single" />
             </StackPanel>
         </Grid>
     </Grid>

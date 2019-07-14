@@ -26,7 +26,6 @@ namespace PayrollApp.UI.WPF.ViewModels
 
             try
             {
-
                 using (var conn = new SqlConnection(CONNECTION_STRING))
                 {
                     string query = "SELECT * FROM Users";

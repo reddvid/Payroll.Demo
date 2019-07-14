@@ -13,14 +13,14 @@ namespace PayrollApp.BLogic
     {
         private static readonly string CONNECTION_STRING = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\OneDrive\Documents\pr_users.mdf;Integrated Security=True;Connect Timeout=30";
 
-        List<Employee> DataSource;
+        List<Employee> DataSource = new List<Employee>();
 
         public EmployeeRepository(List<Employee> employees)
         {
             DataSource = employees;
         }
 
-        public EmployeeRepository() : this(null)
+        public EmployeeRepository()
         {
 
         }
@@ -31,7 +31,7 @@ namespace PayrollApp.BLogic
             {
                 var employees = new List<Employee>();
 
-                if (DataSource == null)
+                if (DataSource.Count == 0)
                 {
                     try
                     {

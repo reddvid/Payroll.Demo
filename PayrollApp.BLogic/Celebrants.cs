@@ -9,10 +9,11 @@ namespace PayrollApp.BLogic
 {
     public class Celebrants
     {
-        List<Employee> DataSource;
+        List<Employee> DataSource = new List<Employee>();
 
         public Celebrants()
         {
+           
         }
 
         public Celebrants(List<Employee> employees)
@@ -31,7 +32,7 @@ namespace PayrollApp.BLogic
         {
             get
             {
-                if (DataSource.Count == 0)
+                if (DataSource.Count == 0 || DataSource == null)
                 {
                     DataSource = GetEmployeesFromRepository();
                 }
@@ -47,7 +48,7 @@ namespace PayrollApp.BLogic
         {
             get
             {
-                if (DataSource.Count == 0)
+                if (DataSource.Count == 0 || DataSource == null)
                 {
                     DataSource = GetEmployeesFromRepository();
                 }
@@ -66,7 +67,7 @@ namespace PayrollApp.BLogic
             {
                 var today = DateTime.Today.Day;
 
-                if (DataSource.Count == 0)
+                if (DataSource.Count == 0 || DataSource == null)
                 {
                     DataSource = GetEmployeesFromRepository();
                 }
