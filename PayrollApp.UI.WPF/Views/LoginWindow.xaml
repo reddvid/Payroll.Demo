@@ -85,7 +85,7 @@
         <Rectangle
             Grid.ColumnSpan="2"
             Width="320"
-            Height="800"
+            Height="418"
             HorizontalAlignment="Left"
             Fill="{fw:AcrylicBrush grid,
                                    NoiseOpacity=0.01}"

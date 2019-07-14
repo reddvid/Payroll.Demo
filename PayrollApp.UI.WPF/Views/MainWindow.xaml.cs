@@ -24,7 +24,7 @@ namespace PayrollApp.UI.WPF.Views
     public partial class MainWindow : Window
     {
         public MainViewModel ViewModel { get; } = new MainViewModel();
-        public MainWindow()
+        public MainWindow(string loggedUser)
         {
             InitializeComponent();
 
@@ -41,6 +41,33 @@ namespace PayrollApp.UI.WPF.Views
             lvEmployees.SelectionChanged += LvEmployees_SelectionChanged;
 
             tabMenu.SelectionChanged += TabMenu_SelectionChanged;
+
+            txUser.Text += loggedUser;
+
+            btnLogout.Click += BtnLogout_Click;
+
+            this.Closing += MainWindow_Closing;
+        }
+
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void BtnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show(
+                "Are you sure you want to logout?",
+                "Log out",
+                MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                this.Hide();
+                new LoginWindow().Show();
+                this.Close();
+            }
         }
 
         private void TabMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)

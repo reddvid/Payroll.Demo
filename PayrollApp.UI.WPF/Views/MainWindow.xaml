@@ -79,6 +79,13 @@
 
         </TabControl>
 
+        <StackPanel
+            Margin="10"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom">
+            <TextBlock x:Name="txUser" Text="Logged in as " />
+            <Button x:Name="btnLogout" Content="Logout" />
+        </StackPanel>
 
     </Grid>
 </Window>

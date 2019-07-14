@@ -45,7 +45,7 @@ namespace PayrollApp.UI.WPF.Views
                     {
                         case true:
                             // Go to MainWindow
-                            new MainWindow().Show();
+                            new MainWindow(txUser.Text).Show();
                             Close();
                             break;
                         case false:
