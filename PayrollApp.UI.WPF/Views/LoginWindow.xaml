@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:PayrollApp.UI.WPF"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
     xmlns:local="clr-namespace:PayrollApp.UI.WPF.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Demo Payroll App"
@@ -55,88 +56,101 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="320" />
             <ColumnDefinition Width="6*" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel
-            MinWidth="240"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
+        <Grid
+            x:Name="grid"
+            Grid.ColumnSpan="2"
+            Background="White">
+            <Image
+                x:Name="image"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Source="/Images/drew-beamer-unsplash.jpg"
+                Stretch="UniformToFill" />
             <TextBlock
+                Grid.Column="1"
+                Margin="10"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                FontSize="10"
+                Style="{StaticResource CaptionTextStyle}"
+                Text="Photo by Drew Beamer on Unsplash" />
+            <!--  Photo by Drew Beamer on Unsplash  -->
+            <!--  Photo by Andrei Stratu on Unsplash  -->
+        </Grid>
+        <Rectangle
+            Grid.ColumnSpan="2"
+            Width="320"
+            Height="800"
+            HorizontalAlignment="Left"
+            Fill="{fw:AcrylicBrush grid,
+                                   NoiseOpacity=0.01}"
+            Opacity="0.95" />
+        <Grid>
+            <StackPanel
+                MinWidth="200"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Top"
-                Style="{StaticResource TitleTextStyle}"
-                Text="Login" />
-            <Border
-                x:Name="errorMsg"
-                Margin="0,20,0,00"
-                Padding="20"
-                Background="#ddee2020"
-                CornerRadius="10"
-                Visibility="Collapsed">
-                <TextBlock Foreground="White" Text="Wrong username or password" />
-            </Border>
-            <Grid Margin="0,20,0,0">
-                <!--<TextBlock
+                VerticalAlignment="Center">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Style="{StaticResource TitleTextStyle}"
+                    Text="Login" />
+                <Border
+                    x:Name="errorMsg"
+                    Margin="0,20,0,00"
+                    Padding="20"
+                    Background="#ddee2020"
+                    CornerRadius="10"
+                    Visibility="Collapsed">
+                    <TextBlock Foreground="White" Text="Wrong username or password" />
+                </Border>
+                <Grid Margin="0,20,0,0">
+                    <!--<TextBlock
                 Width="80"
                 VerticalAlignment="Center"
                 Text="Username:" />-->
-                <TextBox x:Name="txUser" Template="{DynamicResource CircularTextBox}" />
-                <TextBlock
-                    Margin="10,0,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Foreground="DarkGray"
-                    IsHitTestVisible="False"
-                    Text="Username">
-                    <TextBlock.Style>
-                        <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="Visibility" Value="Collapsed" />
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Text, ElementName=txUser}" Value="">
-                                    <Setter Property="Visibility" Value="Visible" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-            </Grid>
-            <Grid Margin="0,20,0,0">
-                <PasswordBox x:Name="txPassword" Template="{DynamicResource CircularPasswordBox}" />
-                <TextBlock
-                    x:Name="tbPasswordWatermark"
-                    Margin="10,0,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Foreground="DarkGray"
-                    IsHitTestVisible="False"
-                    Text="Password" />
-            </Grid>
-            <Button
-                x:Name="btnLogin"
-                Width="80"
-                Margin="0,20,0,0"
-                Content="Login" />
-        </StackPanel>
-
-        <Image
-            Grid.Column="1"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Bottom"
-            Source="/Images/drew-beamer-unsplash.jpg"
-            Stretch="UniformToFill" />
-
-        <TextBlock
-            Grid.Column="1"
-            Margin="10"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Bottom"
-            FontSize="10"
-            Style="{StaticResource CaptionTextStyle}"
-            Text="Photo by Drew Beamer on Unsplash" />
-
-        <!--  Photo by Drew Beamer on Unsplash  -->
-        <!--  Photo by Andrei Stratu on Unsplash  -->
+                    <TextBox x:Name="txUser" Template="{DynamicResource CircularTextBox}" />
+                    <TextBlock
+                        Margin="10,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Foreground="DarkGray"
+                        IsHitTestVisible="False"
+                        Text="Username">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=txUser}" Value="">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
+                <Grid Margin="0,20,0,0">
+                    <PasswordBox x:Name="txPassword" Template="{DynamicResource CircularPasswordBox}" />
+                    <TextBlock
+                        x:Name="tbPasswordWatermark"
+                        Margin="10,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Foreground="DarkGray"
+                        IsHitTestVisible="False"
+                        Text="Password" />
+                </Grid>
+                <Button
+                    x:Name="btnLogin"
+                    Width="80"
+                    Margin="0,20,0,0"
+                    Content="Login" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
